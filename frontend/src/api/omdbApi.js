@@ -11,7 +11,7 @@ const omdbClient = axios.create({
 export const searchMovies = async (query, page = 1) => {
   if (!API_KEY) {
     throw new Error(
-      'OMDb API key is not configured. Add VITE_OMDB_API_KEY to your .env file.'
+      'OMDb API key is not configured. Add OMDB_API_KEY to your .env file.'
     );
   }
 
@@ -32,7 +32,7 @@ export const searchMovies = async (query, page = 1) => {
 export const getMovieDetails = async (imdbID) => {
   if (!API_KEY) {
     throw new Error(
-      'OMDb API key is not configured. Add VITE_OMDB_API_KEY to your .env file.'
+      'OMDb API key is not configured. Add OMDB_API_KEY to your .env file.'
     );
   }
 
