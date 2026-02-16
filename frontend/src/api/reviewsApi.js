@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const JSON_SERVER_URL = import.meta.env.SERVER_URL;
+const JSON_SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 /**
  * Fetch paginated reviews for a specific movie
