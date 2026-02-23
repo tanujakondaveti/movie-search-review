@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const JSON_SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 /**
  * Fetch paginated reviews for a specific movie
@@ -11,7 +11,7 @@ const JSON_SERVER_URL = import.meta.env.VITE_SERVER_URL;
  */
 export const fetchReviewsByMovieId = async (imdbID, page = 1, limit = 10) => {
     try {
-        const response = await axios.get(`${JSON_SERVER_URL}/movies/${imdbID}/reviews`, {
+        const response = await axios.get(`${SERVER_URL}/movies/${imdbID}/reviews`, {
             params: { page, limit }
         });
 
@@ -30,7 +30,7 @@ export const fetchReviewsByMovieId = async (imdbID, page = 1, limit = 10) => {
  */
 export const addReviewToMovie = async (imdbID, review) => {
     try {
-        const response = await axios.post(`${JSON_SERVER_URL}/movies/${imdbID}/reviews`, review);
+        const response = await axios.post(`${SERVER_URL}/movies/${imdbID}/reviews`, review);
         return response.data;
     } catch (error) {
         console.error('Error adding review:', error);
@@ -45,7 +45,7 @@ export const addReviewToMovie = async (imdbID, review) => {
  */
 export const deleteReviewFromMovie = async (reviewId) => {
     try {
-        const response = await axios.delete(`${JSON_SERVER_URL}/reviews/${reviewId}`);
+        const response = await axios.delete(`${SERVER_URL}/reviews/${reviewId}`);
         return response.data;
     } catch (error) {
         console.error('Error deleting review:', error);
@@ -62,7 +62,7 @@ export const deleteReviewFromMovie = async (reviewId) => {
  */
 export const updateMovieSummary = async (imdbID, summary, sentimentCounts) => {
     try {
-        const response = await axios.patch(`${JSON_SERVER_URL}/movies/${imdbID}/summary`, {
+        const response = await axios.patch(`${SERVER_URL}/movies/${imdbID}/summary`, {
             reviewSummary: summary,
             sentimentCounts
         });
